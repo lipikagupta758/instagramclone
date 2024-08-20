@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static 
 from django.contrib.auth.urls import views as auth_views
 from django.views.static import  serve
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [ 
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
@@ -30,4 +31,4 @@ urlpatterns = [
     path('direct/', include('chatapp.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 
-]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+]
