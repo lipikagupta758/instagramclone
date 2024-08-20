@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/fc1e235b2e.js"></script>
+  <link rel="stylesheet" href="{% static 'assets2/style.css' %}">
+  <title>Instagram | Register</title>
+</head>
+
+<style>
+  .error-message {
+    color: #ff3860; /* A red color for error messages */
+    background-color: #fff4f4; /* Light red background for visibility */
+    padding: 8px;
+    border: 1px solid #ff3860;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+
+  /* Highlight the input field with errors */
+  input.is-invalid, textarea.is-invalid, select.is-invalid {
+    border-color: #ff3860;
+    background-color: #fff4f4;
+  }
+</style>
+
+<body>
+
+  <div id="wrapper">
+    <div class="container">
+      <div class="phone-app-demo"></div>
+      <div class="form-data">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="logo">
+            <img src="{% static 'assets2/images/logo.png' %}" alt="logo">
+          </div>
+          {% if form.first_name.errors %}
+            <div class="error-message">
+              {{ form.first_name.errors }}
+            </div>
+          {% endif %}
+          {{ form.first_name }}
+
+          {% if form.last_name.errors %}
+            <div class="error-message">
+              {{ form.last_name.errors }}
+            </div>
+          {% endif %}
+          {{ form.last_name }}
+
+          {% if form.username.errors %}
+            <div class="error-message">
+              {{ form.username.errors }}
+            </div>
+          {% endif %}
+          {{ form.username }}
+   
+          {% if form.email.errors %}
+            <div class="error-message">
+              {{ form.email.errors }}
+            </div>
+          {% endif %}
+          {{ form.email }}
+
+          {% if form.password1.errors %}
+            <div class="error-message">
+              {{ form.password1.errors }}
+            </div>
+          {% endif %}
+          {{ form.password1 }}
+          
+          {% if form.password2.errors %}
+            <div class="error-message">
+              {{ form.password2.errors }}
+            </div>
+          {% endif %}
+          {{ form.password2 }}
+
+          <button class="form-btn" type="submit">Sign Up</button>
+
+          <!-- <a href="index.html" class="form-btn" type="submit">Log in</a> -->
+          <span class="has-separator">Or</span>
+          <a class="facebook-login" href="#">
+            <i class="fab fa-facebook-square"></i> Log in with Facebook
+          </a>
+          <a class="password-reset" href="#">Forgot password?</a>
+        </form>
+
+        <div class="sign-up">
+          Don't have an account? <a href="{% url 'login' %}">Sign In</a>
+        </div>
+        <div class="get-the-app">
+          <span>Get the app.</span>
+          <div class="badges">
+            <a href= "https://play.google.com/store/apps/details?id=com.instagram.android&referrer=ig_mid%3D6101CF43-8937-4033-B9D9-4770E2007E67%26utm_campaign%3DloginPage%26utm_content%3Dlo%26utm_source%3Dinstagramweb%26utm_medium%3Dbadge&pli=1"><img src="{% static 'assets2/images/app-store.png' %}" alt="app-store badge"></a>
+            <img src="{% static 'assets2/images/google-play.png' %}" alt="google-play badge">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</body>
+
+</html>

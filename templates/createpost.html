@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/fc1e235b2e.js"></script>
+  <link rel="stylesheet" href="{% static 'assets2/style.css' %}">
+  <title>Instagram Create Post Form</title>
+</head>
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #wrapper {
+        width: 100%;
+        max-width: 600px; /* Adjust the max-width as needed */
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: auto;
+    }
+</style>
+
+<body>
+
+  <div id="wrapper">
+    <div class="container">
+      <div class="phone-app-ddemo"></div>
+      <div class="form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+          <div class="logo">
+            <h3 style="padding: 20px; font-size: 20px;">Create New Post</h3>
+          </div>
+          {{form.picture}} <br>
+          {{form.caption}} <br>
+          {{form.tags}} <br>
+          <button class="form-btn" type="submit">Post</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+  <footer>
+      <div class="container">
+        <nav class="footer-nav">
+          <ul>
+            <li>
+              <a href= "https://about.meta.com/">Meta</a>
+            </li>
+            <li>
+              <a href="https://about.instagram.com/">About</a>
+            </li>
+            <li>
+              <a href= "https://about.instagram.com/blog"> Blog </a>
+            </li>
+            <li>
+              <a href="https://about.instagram.com/about-us/careers">Jobs</a>
+            </li>
+            <li>
+              <a href= "https://help.instagram.com/"> Help</a>
+            </li>
+            <li>
+              <a href="https://developers.facebook.com/docs/instagram-platform">Api</a>
+            </li>
+            <li>
+              <a href="https://privacycenter.instagram.com/policy/?entry_point=ig_help_center_data_policy_redirect">Privacy</a>
+            </li>
+            <li>
+              <a href="https://help.instagram.com/581066165581870/">Terms</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/explore/locations/">Locations</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright-notice">
+          &copy 2024 Instagram
+        </div>
+      </div>
+    </footer>
+
+</body>
+
+</html>
+{% endblock content %}

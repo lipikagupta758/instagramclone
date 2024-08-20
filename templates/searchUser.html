@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/fc1e235b2e.js"></script>
+  <link rel="stylesheet" href="{% static 'assets2/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Instagram Search User</title>
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #wrapper {
+        width: 100%;
+        max-width: 600px; /* Adjust the max-width as needed */
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: auto;
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-data {
+        width: 100%;
+    }
+    .side-menu__user-profile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .side-menu__user-avatar {
+      flex-shrink: 0;
+      margin-right: 10px;
+      position: relative; /* If other elements overlap, ensure this element is on top */
+      z-index: 10;
+    }
+    .side-menu__user-info {
+      flex-grow: 1;
+    }
+    .side-menu__user-actions {
+      flex-shrink: 0;
+      height: 20;
+    }
+    .btn.btn-success {
+    padding: 8px 20px;
+    font-size: 12px;
+    }
+    .side-menu__user-avatar a {
+    display: block; /* Ensures the anchor tag takes up space */
+    width: 100%; /* Optional: make the link span the full width of the container */
+    height: auto;
+    }
+</style>
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <div class="container">
+      <div class="phone-app-ddemo"></div>
+      <div class="form-data">
+        
+        <div class="logo">
+            <h3 style="padding-top: 5px; font-size: 20px;">Search Results</h3>
+        </div>
+        {% for user in search_results %}
+            <div class="side-menu__user-profile" style="text-align: start; border: solid rgba(192, 192, 192, 0.514) 1px; padding: 10px; border-radius: 25px;">
+                <div class="side-menu__user-avatar">
+                
+                    {% if user.profile.image %}
+                        <a href= "{% url 'profile' user.username %}"><img src="{{ user.profile.image.url }}" alt="User Picture"></a>
+                    {% else %}
+                        <a href= "{% url 'profile' user.username %}"><img src="{% static 'assets1/default-user.png' %}" alt="User Picture"> </a>
+                    {% endif %}
+                
+                </div>
+                <div class="side-menu__user-info">
+                    <div style="font-size: 15px; color: black; text-align: center;">{{user.profile.first_name|title }} {% if user.profile.last_name %} {{user.profile.last_name|title }} {% endif %}</div>
+                    <a href= "{% url 'profile' user.username %}"><span style="font-size: 14px;">{{user.username}}</span></a>
+                </div>
+                <div class="side-menu__user-actions">
+                    <a href="{% url 'profile' user.username %}" class="btn btn-success">View Profile</a>
+                </div>
+            </div>
+            <!-- <hr> -->
+        {% endfor %}
+        
+      </div>
+    </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <nav class="footer-nav">
+          <ul>
+            <li>
+              <a href= "https://about.meta.com/">Meta</a>
+            </li>
+            <li>
+              <a href="https://about.instagram.com/">About</a>
+            </li>
+            <li>
+              <a href= "https://about.instagram.com/blog"> Blog </a>
+            </li>
+            <li>
+              <a href="https://about.instagram.com/about-us/careers">Jobs</a>
+            </li>
+            <li>
+              <a href= "https://help.instagram.com/"> Help</a>
+            </li>
+            <li>
+              <a href="https://developers.facebook.com/docs/instagram-platform">Api</a>
+            </li>
+            <li>
+              <a href="https://privacycenter.instagram.com/policy/?entry_point=ig_help_center_data_policy_redirect">Privacy</a>
+            </li>
+            <li>
+              <a href="https://help.instagram.com/581066165581870/">Terms</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/explore/locations/">Locations</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright-notice">
+          &copy 2024 Instagram
+        </div>
+      </div>
+    </footer>
+
+</body>
+
+</html>
+{% endblock content %}
