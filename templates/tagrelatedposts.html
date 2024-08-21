@@ -29,15 +29,12 @@
     <header>
         <div>
          <h1 style="font-size: 50px; margin-top: 100px; text-align:center; font-weight: bold; margin-bottom: 50px;">#{{tag.title|title}}</h1>
-        
         </div>
     </header>
+    
     <main>
-
         <div class="container">
-
-            <div class="gallery">
-                
+            <div class="gallery">       
                 {% for post in posts %}
                 <a href="{{post.get_absolute_url}}"><div class="gallery-item" tabindex="0">
 
@@ -57,11 +54,10 @@
             </div>
             <!-- End of gallery -->
 
-            <div class="loader"></div>
-
         </div>
         <!-- End of container -->
-        <footer>
+    </main>
+    <footer>
       <div class="container">
         <nav class="footer-nav">
           <ul>
@@ -98,9 +94,7 @@
           &copy 2024 Instagram
         </div>
       </div>
-    </footer>
-
-    </main>
+  </footer>
 </body>
 
 {% endblock content %}

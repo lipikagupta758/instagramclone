@@ -124,4 +124,4 @@ def tagRelatedPosts(request, tag_id):
     tag= get_object_or_404(Tag, slug= tag_id)
     posts= Post.objects.filter(tags= tag).order_by('-posted')
 
-    return render(request, 'tagRelatedPosts.html', {'posts': posts, 'tag': tag})
+    return render(request, 'tagrelatedposts.html', {'posts': posts, 'tag': tag})
